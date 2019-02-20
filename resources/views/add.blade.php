@@ -62,7 +62,9 @@
             </form>
             <hr>
             <a href="{{ route('tasks.create') }}">Add new task</a>
-            <a href="{{ route('tasks.index') }}">Tasks list</a>    </div>
+            <a href="{{ route('tasks.index') }}">Tasks list</a>
+        </div>
+        <a href="{{ route('welcome') }}">< Back</a>
     </div>
 </form>
 <!-- Bootstrap JS -->

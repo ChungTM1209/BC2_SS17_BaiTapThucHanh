@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body>
+
 <div class="flex-center position-ref full-height">
     <div class="content">
         <div class="title m-b-md">
@@ -20,6 +22,11 @@
         </div>
     </div>
 </div>
+@if (Session::has('success'))
+    <p class="text-success">
+        <i class="fa fa-check" aria-hidden="true"></i>{{ Session::get('success') }}
+    </p>
+@endif
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -41,6 +48,8 @@
             <th scope="col">Content</th>
             <th scope="col">Created</th>
             <th scope="col">Due Date</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -56,13 +65,14 @@
                     <td>{{ $task->content}}</td>
                     <td>{{ $task->created_at}}</td>
                     <td>{{ $task->updated_at}}</td>
+                    <td><a href="{{route('tasks.edit',$task->id)}}">EDIT</a></td>
+                    <td><a href="{{route('tasks.destroy',$task->id)}}">Delete</a></td>
                 </tr>
             @endforeach
         @endif
         </tbody>
     </table>
 @endif
-<a href="{{ route('welcome') }}">< Back</a>
-
+<a href="{{ route('tasks.create') }}">< ADD</a>
 </body>
 </html>

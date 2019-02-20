@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-Route::get('/tasks', 'TaskController@index')->name('tasks.index');
-Route::get('/tasks/create', 'TaskController@create')->name('tasks.create');
 
-Route::post('/tasks/create', 'TaskController@store')->name('tasks.store');
+
+Route::get('/', function () {
+    return view('home');
+})->name('welcome');
+Route::group(['prefix' => 'tasks'], function () {
+    Route::get('/','TaskController@index')->name('tasks.index');
+    Route::get('/create','TaskController@create')->name('tasks.create');
+    Route::post('/create','TaskController@store')->name('tasks.store');
+    Route::get('/{id}/edit','TaskController@edit')->name('tasks.edit');
+    Route::post('/{id}/edit','TaskController@update')->name('tasks.update');
+    Route::get('/{id}/destroy','TaskController@destroy')->name('tasks.destroy');
+});
