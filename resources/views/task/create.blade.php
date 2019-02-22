@@ -23,7 +23,8 @@
 
                     <label >Tên công việc</label>
 
-                    <input type="text" class="form-control" name="task_title" required>
+                    <input type="text" class="form-control" name="task_title" >
+                    {{$errors->first('task_title')}}
 
                 </div>
 
@@ -31,7 +32,14 @@
 
                     <label >Nội dung</label>
 
-                    <textarea class="form-control" rows="3" name="content" required></textarea>
+                    <textarea class="form-control" rows="3" name="content" ></textarea>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                    <li>{{$errors->first('content')}}</li>
+                            </ul>
+                        </div>
+                    @endif
 
                 </div>
 
@@ -39,7 +47,9 @@
 
                     <label for="exampleFormControlFile1">Ảnh</label>
 
-                    <input type="file" name="image" class="form-control-file" required>
+                    <input type="file" name="image" class="form-control-file" >
+                    {{$errors->first('image')}}
+
 
                 </div>
 
@@ -47,7 +57,9 @@
 
                     <label for="exampleFormControlFile1">Ngày hết hạn</label>
 
-                    <input type="date" name="created_at" class="form-control" required>
+                    <input type="date" name="created_at" class="form-control" >
+                    {{$errors->first('created_at')}}
+
 
                 </div>
 

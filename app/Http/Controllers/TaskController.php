@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TaskRequest;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,7 @@ class TaskController extends Controller
     public function create(){
         return view('task.create');
     }
-    public function store(Request $request){
+    public function store(TaskRequest $request){
         $task = new Task();
         $task->task_title = $request->input('task_title');
         $task->content = $request->input('content');
